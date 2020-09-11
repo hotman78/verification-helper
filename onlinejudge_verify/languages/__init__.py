@@ -10,6 +10,7 @@ from onlinejudge_verify.languages.models import Language, LanguageEnvironment
 from onlinejudge_verify.languages.nim import NimLanguage
 from onlinejudge_verify.languages.other import OtherLanguage
 from onlinejudge_verify.languages.python import PythonLanguage
+from onlinejudge_verify.languages.rust import RustLanguage
 
 logger = getLogger(__name__)
 
@@ -25,7 +26,7 @@ def _get_dict() -> Dict[str, Language]:
         _dict['.csx'] = CSharpScriptLanguage()
         _dict['.nim'] = NimLanguage()
         _dict['.py'] = PythonLanguage()
-
+        _dict['.rs'] = RustLanguage()
         for ext, config in get_config().get('languages', {}).items():
             if '.' + ext in _dict:
                 for key in ('compile', 'execute', 'bundle', 'list_attributes', 'list_dependencies'):
