@@ -42,7 +42,6 @@ def _list_direct_dependencies(path: pathlib.Path, *, basedir: pathlib.Path) -> L
                 continue
             item_ = (path.parent/pathlib.Path(line+".rs"))
             mod_item_ = (path.parent/pathlib.Path(line+"/mod.rs"))
-            print(item_.absolute())
             if item_.exists():
                 dependencies.append(item_.absolute())
             elif mod_item_.exists():
